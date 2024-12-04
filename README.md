@@ -32,8 +32,8 @@
 ### 1️⃣ Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/ваш-репозиторий
-cd ваш-проект
+git clone https://github.com/ecommerse-fullstack-app
+cd ecommerse-fullstack-app
 ```
 
 ### 2️⃣ Установите зависимости:
