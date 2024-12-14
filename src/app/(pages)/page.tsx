@@ -7,73 +7,25 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 import ReviewsRotatingCard from "@/components/cards/RotatingCards/ReviewsRotatingCard";
 import RotatingCard from "@/components/cards/RotatingCards/RotatingCard";
 import HeroSwiper from "@/components/swiper/HeroSwiper";
-import { buttonVariants } from "@/components/ui/button";
+import { ButtonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { animations } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Award, BookHeart, Cpu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+// TODO: export animations, classes from all components to separate utils
+// animation +
+// classes
 export default function Home() {
-  const leftToRightAnimation = {
-    hidden: {
-      x: -100,
-      opacity: 0,
-    },
-    visible: (custom: number) => ({
-      x: 0,
-      opacity: 1,
-      transition: {
-        delay: custom * 0.2,
-        duration: 1,
-      },
-    }),
-  };
+  const leftToRightAnimation = animations.slide("left", 1);
 
-  const rightToLeftAnimation = {
-    hidden: {
-      x: 100,
-      opacity: 0,
-    },
-    visible: (custom: number) => ({
-      x: 0,
-      opacity: 1,
-      transition: {
-        delay: custom * 0.2,
-        duration: 1,
-      },
-    }),
-  };
+  const rightToLeftAnimation = animations.slide("right", 1);
 
-  const downToUpAnimation = {
-    hidden: {
-      y: 100,
-      opacity: 0,
-    },
-    visible: (custom: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: custom * 0.2,
-        duration: 1,
-      },
-    }),
-  };
+  const upToDownAnimation = animations.slide("up", 1);
 
-  const upToDownAnimation = {
-    hidden: {
-      y: -100,
-      opacity: 0,
-    },
-    visible: (custom: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: custom * 0.2,
-        duration: 1,
-      },
-    }),
-  };
+  const downToUpAnimation = animations.slide("down", 1);
 
   return (
     // Main Container
@@ -98,11 +50,10 @@ export default function Home() {
         <div className="flex flex-col justify-center w-full">
           {/* text container */}
           <motion.div
+            variants={leftToRightAnimation(1)}
             initial="hidden"
             whileInView="visible"
-            custom={1}
             viewport={{ once: true }}
-            variants={leftToRightAnimation}
             className="flex flex-col items-center mt-24 cursor-default"
           >
             <h1 className="text-center transition-all text-6xl lg:text-7xl xl:text-8xl text-white font-bold max-w-lg lg:max-w-2xl xl:max-w-4xl tracking-wider text-pretty">
@@ -134,12 +85,11 @@ export default function Home() {
           >
             <div className="flex flex-col w-full items-center p-6">
               <motion.div
-                className="flex flex-col items-center w-full"
+                variants={rightToLeftAnimation(1)}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={rightToLeftAnimation}
-                custom={1}
+                className="flex flex-col items-center w-full"
               >
                 <p className="text-center w-full text-2xl sm:text-3xl lg:text-4xl text-white font-light max-w-xl lg:max-w-4xl xl:max-w-6xl tracking-wide text-pretty">
                   Welcome to Noble Homes International: <br /> Your Premier
@@ -158,11 +108,10 @@ export default function Home() {
 
               {/* button container */}
               <motion.div
+                variants={downToUpAnimation(1)}
                 initial="hidden"
                 animate="visible"
                 viewport={{ once: true }}
-                variants={downToUpAnimation}
-                custom={1}
                 className="mt-10 md:mt-20 lg:mt-12 flex justify-center"
               >
                 <div className="flex text-white font-bold text-center justify-center">
@@ -173,7 +122,7 @@ export default function Home() {
                     <Link
                       href="/catalog"
                       className={cn(
-                        buttonVariants({ variant: "outline" }),
+                        ButtonVariants({ variant: "outline" }),
                         "text-white backdrop-blur-sm hover:text-amber-400 hover:bg-black border border-red-800 hover:border-amber-400 font-bold text-2xl p-6 transition-all duration-300 ease-in-out hover:italic",
                         montserrat.className
                       )}
@@ -193,18 +142,17 @@ export default function Home() {
         {/* swiper container */}
         <div className="flex flex-col items-center w-full mt-12 md:mt-0 h-full">
           <motion.div
-            variants={downToUpAnimation}
+            variants={downToUpAnimation(0.5)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             className="flex flex-col w-10/12 h-full p-4 rounded-2xl border-2 border-red-800/70 bg-red-950/25 hover:bg-black hover:border-amber-400 group/first"
           >
             <motion.div
-              variants={upToDownAnimation}
+              variants={upToDownAnimation(6)}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              custom={6}
             >
               <h1
                 className="flex w-full bg-red-800 border border-red-800 underline 
@@ -218,11 +166,10 @@ export default function Home() {
               </h1>
             </motion.div>
             <motion.div
-              variants={rightToLeftAnimation}
+              variants={rightToLeftAnimation(3)}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              custom={3}
               className="w-full h-full mt-12"
             >
               <HeroSwiper></HeroSwiper>
@@ -236,19 +183,17 @@ export default function Home() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          variants={upToDownAnimation}
-          custom={3}
+          variants={upToDownAnimation(3)}
           viewport={{ once: true }}
           className="w-full flex flex-col h-full items-center m-12"
         >
           {/* Achievements Container */}
           <div className="flex relative flex-col gap-12 group hover:bg-black bg-red-950/40 border border-red-800/70 hover:border-amber-400 justify-start items-center w-10/12 h-full text-xl text-white p-4 rounded-xl mt-12 transition-all duration-300 easy-in-out">
             <motion.div
-              variants={upToDownAnimation}
+              variants={upToDownAnimation(5)}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              custom={5}
               className="flex justify-center w-full"
             >
               <div className="flex items-center justify-center  text-black rounded-xl p-6 bg-red-800 border border-red-800 group-hover:bg-black group-hover:border group-hover:border-amber-400 group-hover:text-amber-400 font-bold underline underline-offset-4 tracking-widest w-full transition-all duration-500 ease-in-out">
@@ -259,8 +204,7 @@ export default function Home() {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                custom={4}
-                variants={leftToRightAnimation}
+                variants={leftToRightAnimation(4)}
                 viewport={{ once: true }}
                 className="flex flex-1 flex-col justify-center"
               >
@@ -275,8 +219,7 @@ export default function Home() {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                custom={4}
-                variants={downToUpAnimation}
+                variants={downToUpAnimation(4)}
                 viewport={{ once: true }}
                 className="flex flex-1 flex-col justify-center items-center"
               >
@@ -289,8 +232,7 @@ export default function Home() {
               </motion.div>
 
               <motion.div
-                custom={4}
-                variants={rightToLeftAnimation}
+                variants={rightToLeftAnimation(4)}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -309,21 +251,19 @@ export default function Home() {
       </div>
       {/* Reviews */}
       <motion.div
-        variants={leftToRightAnimation}
+        variants={leftToRightAnimation(3)}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        custom={3}
         className="flex w-full justify-center h-full mt-8 mb-24"
       >
         <div className="flex flex-col rounded-xl group w-10/12 h-full gap-12 justify-start items-stretch hover:bg-black bg-red-950/40 border border-red-800/70 hover:border-amber-400 transition-all ease-in-out duration-500">
           {/* Heading container */}
           <motion.div
-            variants={upToDownAnimation}
+            variants={upToDownAnimation(4)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            custom={4}
           >
             <div className="flex text-white justify-center items-start w-full transition-all ease-in-out duration-500">
               <h2 className="text-3xl w-full m-8 text-center border group-hover:bg-black group-hover:border-amber-400 group-hover:text-amber-400 border-red-800 bg-red-800 p-8 rounded-xl font-bold tracking-widest transition-all ease-in-out duration-200 text-black underline underline-offset-4">

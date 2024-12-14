@@ -34,13 +34,13 @@ const page = () => {
         "https://images.unsplash.com/photo-1723403067470-f8086763ac00?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
-
+  console.log(typeof catalogItems);
   return (
     <div className="">
       {/* Main Container */}
       <div className="flex flex-col items-center justify-center w-full h-full pt-40 mb-24">
         {/* Catalog Container */}
-        <div className="w-10/12 h-full group border border-red-800 bg-red-950/25 hover:border-amber-400 hover:bg-black rounded-xl p-12 transition-all duration-300">
+        <div className="w-11/12 sm:w-10/12 h-full group border border-red-800 bg-red-950/25 hover:border-amber-400 hover:bg-black rounded-xl p-12 transition-all duration-300">
           {/* text container */}
           <div className="w-full bg-red-800 border border-red-700 group-hover:border-amber-400 group-hover:bg-black p-8 text-center rounded-xl transition-all duration-300">
             <h1 className="text-black group-hover:text-amber-400 text-3xl group-hover:font-bold duration-500 transition-all ">
@@ -57,10 +57,10 @@ const page = () => {
           </div>
 
           {/* Content Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 w-full h-full p-8 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 w-full h-full max-sm:py-9 sm:p-8 gap-12">
             {/* Map through catalogItems and render CatalogCard for each item */}
             {catalogItems.map((item) => (
-              <div key={item.id} className="w-96 h-96">
+              <div key={item.id} className="w-full min-h-96 md:w-96 md:h-96">
                 <CatalogCard
                   name={item.name}
                   address={item.address}

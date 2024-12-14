@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Webhook } from "lucide-react";
 import Link from "next/link";
-import { buttonVariants } from "../ui/button";
+import { ButtonVariants } from "../ui/button";
 import { usePathname } from "next/navigation";
 
 const items = [
@@ -78,10 +78,10 @@ const NavBar = () => {
           <div className="flex text-white font-extralight text-md text-center -ml-2 h-12 xl:h-14 lg:-ml-8 2xl:-ml-24">
             <Link
               className={cn(
-                buttonVariants({ variant: "outline" }),
-                "mr-4 lg:mr-8 lg:text-lg xl:text-xl 2xl:text-2xl 2xl:p-4 2xl:mr-16 hover:font-bold duration-200 hover:bg-red-800 border-red-800"
+                ButtonVariants({ variant: "outline" }),
+                "mr-4 lg:mr-8 h-12 xl:h-14 lg:text-lg xl:text-xl 2xl:text-2xl 2xl:p-4 hover:bg-red-900 hover:font-bold duration-200 border-red-800"
               )}
-              href="/signout"
+              href="/"
             >
               Logout
             </Link>
@@ -90,7 +90,7 @@ const NavBar = () => {
           <div className="flex text-white font-extralight text-md text-center -ml-2 lg:-ml-8 2xl:-ml-24">
             <Link
               className={cn(
-                buttonVariants({ variant: "outline" }),
+                ButtonVariants({ variant: "outline" }),
                 "mr-4 lg:mr-8 h-12 xl:h-14 lg:text-lg xl:text-xl 2xl:text-2xl 2xl:p-4 hover:bg-red-900 hover:font-bold duration-200 border-red-800"
               )}
               href="/sign-in"
@@ -100,7 +100,7 @@ const NavBar = () => {
 
             <Link
               className={cn(
-                buttonVariants({ variant: "outline" }),
+                ButtonVariants({ variant: "outline" }),
                 "mr-4 lg:mr-8 h-12 xl:h-14 lg:text-lg xl:text-xl 2xl:text-2xl 2xl:p-4 hover:bg-red-900 hover:font-bold duration-200 hover:text-black border-red-800"
               )}
               href="/sign-up"

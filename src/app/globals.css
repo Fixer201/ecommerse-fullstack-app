@@ -6,8 +6,9 @@
   --background: @apply bg-black/95;
 }
 
+/* Chrome, Edge, and Safari */
 ::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.7rem;
   scrollbar-width: thin;
 }
 
@@ -22,6 +23,12 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffffe3;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: calc(0.7rem);
+  scrollbar-color: rgb(117, 21, 21) rgb(46, 46, 46);
 }
 
 body {

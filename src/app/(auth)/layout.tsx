@@ -5,6 +5,8 @@ import "../globals.css";
 import { cn } from "@/lib/utils";
 import { Providers } from "@/app/providers";
 import NavBar from "@/components/navbar/NavBar";
+import Footer from "@/components/footer/footer";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
 import type { Metadata } from "next";
 export const metadata: Metadata = {
@@ -21,7 +23,10 @@ export default function AuthLayout({
     <html lang="en" className="overflow-x-hidden">
       <body className={cn("className: debug-screens", montserrat.className)}>
         <NavBar />
-        <Providers>{children}</Providers>
+        <SmoothScrolling>
+          <Providers>{children}</Providers>
+        </SmoothScrolling>
+        <Footer />
       </body>
     </html>
   );
