@@ -57,10 +57,10 @@ const page = () => {
           </div>
 
           {/* Content Container */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 w-full h-full max-sm:py-9 sm:p-8 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 w-full h-full max-sm:py-9 sm:p-8 justify-center items-center gap-12">
             {/* Map through catalogItems and render CatalogCard for each item */}
             {catalogItems.map((item) => (
-              <div key={item.id} className="w-full min-h-96 md:w-96 md:h-96">
+              <div key={item.id} className="w-full min-h-96 md:min-w-96 md:h-full">
                 <CatalogCard
                   name={item.name}
                   address={item.address}

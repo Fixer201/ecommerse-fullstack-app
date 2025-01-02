@@ -38,9 +38,9 @@ const NavBar = () => {
     // Desktop navigation
     <div className="hidden fixed w-full md:flex justify-center z-50 backdrop-blur-2xl border-b border-red-800">
       {/* Navbar container */}
-      <div className="p-8 flex items-center gap-8 lg:gap-32 xl:gap-64 2xl:gap-96">
+      <div className="p-8 flex items-center gap-8 lg:gap-32 xl:gap-64 2xl:gap-72">
         {/* Logo container */}
-        <div className="flex rounded-lg text-white text-xl lg:ml-12 xl:ml-24 ml-3 ">
+        <div className="flex rounded-lg text-white text-xl lg:ml-12 xl:ml-24 ml-3">
           <Link href="/">
             <Webhook className="h-12 w-12 2xl:w-16 2xl:h-16 bg-black rounded-full p-2 lg:h-14 lg:w-14 border hover:text-black hover:bg-red-800 border-red-800 transition-all ease-in duration-150" />
           </Link>
